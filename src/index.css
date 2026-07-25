@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-red: var(--accent-red);
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root, html.light {
+  /* White Base with Royal Blue & Crimson Red Orbs & Accents */
+  --bg: #ffffff;
+  --surface: rgba(248, 250, 252, 0.85);
+  --surface-hover: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #2563eb; /* Royal Blue */
+  --accent-soft: rgba(37, 99, 235, 0.1);
+  --accent-red: #ef4444; /* Crimson Red */
+  --orb-blue: rgba(37, 99, 235, 0.16);
+  --orb-red: rgba(239, 68, 68, 0.14);
+}
+
+html.dark {
+  /* Dark Slate Base with Electric Blue & Red Glow Orbs */
+  --bg: #0b0f19;
+  --surface: rgba(18, 24, 38, 0.85);
+  --surface-hover: #1e293b;
+  --border: #23314d;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #3b82f6; /* Electric Blue */
+  --accent-soft: rgba(59, 130, 246, 0.15);
+  --accent-red: #ef4444; /* Crimson Red */
+  --orb-blue: rgba(59, 130, 246, 0.18);
+  --orb-red: rgba(239, 68, 68, 0.16);
+}
+
+/* Neel Mishra Ambient Glow Orbs */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.orb-blue {
+  top: -120px;
+  left: -120px;
+  width: 550px;
+  height: 550px;
+  background: var(--orb-blue);
+}
+
+.orb-red {
+  bottom: -120px;
+  right: -120px;
+  width: 550px;
+  height: 550px;
+  background: var(--orb-red);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
